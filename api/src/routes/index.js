@@ -1,22 +1,24 @@
-const { Router } = require("express");
+const { Router, response } = require("express");
 
+const axios = require("axios");
+const { Pokemon, Tipo } = require("../db");
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
-const get_pokemons = require('./get_pokemons.js');
-
-const post_pokemons = require('./post_pokemons.js');
-const get_types = require('./get_types.js');
+const get_pokemons = require("./get_pokemons.js");
+const get_pokemons_id = require("./get_pokemons_id.js");
+const post_pokemons = require("./post_pokemons.js");
+const get_types = require("./get_types.js");
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.use('/', get_pokemons)
-
-router.use('/', post_pokemons)
-router.use('/', get_types)
+router.use("/", get_pokemons);
+router.use("/", get_pokemons_id);
+router.use("/", post_pokemons);
+router.use("/", get_types);
 
 module.exports = router;

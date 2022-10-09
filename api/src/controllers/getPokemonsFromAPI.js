@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const getPokemonsByAPI = async () => {
+const getPokemonsFromAPI = async () => {
   try {
     const response = await axios.get(
       "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0"
@@ -40,4 +40,4 @@ const getPokemonsByAPI = async () => {
   }
 };
 
-module.exports = getPokemonsByAPI;
+module.exports = getPokemonsFromAPI;
