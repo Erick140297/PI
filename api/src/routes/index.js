@@ -23,6 +23,12 @@ router.post("/pokemons", async (req, res) => {
     const { name } = req.body;
     const newPokemon = await Pokemon.create({
       name,
+      vida,
+      ataque,
+      defensa,
+      velocidad,
+      altura,
+      peso,
     });
     res.status(201).send(newPokemon);
   } catch (error) {
@@ -34,7 +40,7 @@ router.get("/types", async (req, res) => {
   try {
     const types = await Tipo.findAll();
     if (types.length === 0) {
-      console.log('Datos mostrados desde la API')
+      console.log("Datos mostrados desde la API");
       const response = await axios.get("https://pokeapi.co/api/v2/type");
       let Types = [];
       for (let i = 0; i < response.data.results.length; i++) {
@@ -43,7 +49,7 @@ router.get("/types", async (req, res) => {
       const newTypes = await Tipo.bulkCreate(Types);
       return res.status(201).send(newTypes);
     }
-    console.log('Datos mostrados desde la db')
+    console.log("Datos mostrados desde la db");
     res.status(200).send(types);
   } catch (error) {
     res.status(400).send(error.message);
