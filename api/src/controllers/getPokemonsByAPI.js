@@ -13,6 +13,12 @@ const getPokemonsByAPI = async () => {
     const pokeData = await Promise.all(promises);
 
     const pokemons = await pokeData.map((e) => {
+      const tipos = [];
+
+      for (let i = 0; i < e.data.types.length; i++) {
+        tipos.push(e.data.types[i].type.name);
+      }
+
       return {
         id: e.data.id,
         nombre: e.data.name,
@@ -25,6 +31,7 @@ const getPokemonsByAPI = async () => {
         img:
           e.data.sprites.other["official-artwork"].front_default ||
           e.data.sprites.front_default,
+        tipos: tipos,
       };
     });
     return pokemons;
@@ -33,4 +40,4 @@ const getPokemonsByAPI = async () => {
   }
 };
 
-module.exports = getPokemonsByAPI
+module.exports = getPokemonsByAPI;
