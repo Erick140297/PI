@@ -12,27 +12,27 @@ module.exports = (sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
-      name: {
+      nombre: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       vida: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       ataque: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       defensa: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       velocidad: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       altura: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       peso: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
     },
     { timestamps: false }

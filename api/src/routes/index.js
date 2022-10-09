@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { Pokemon, Tipo } = require("../db");
 const axios = require("axios");
+const getPokemonsByAPI = require('../controllers/getPokemonsByAPI');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -10,8 +11,17 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get("/home", (req, res) => {
-  res.status(200).send("Estas en home");
+// GET /pokemons:
+// Obtener un listado de los pokemons desde pokeapi.
+// Debe devolver solo los datos necesarios para la ruta principal
+
+router.get("/pokemons", async (req, res) => {
+  try {
+   
+    res.status(200).send(await getPokemonsByAPI())
+  } catch (error) {
+    
+  }
 });
 
 // POST /pokemons:
@@ -20,9 +30,9 @@ router.get("/home", (req, res) => {
 
 router.post("/pokemons", async (req, res) => {
   try {
-    const { name } = req.body;
+    const { nombre, vida, ataque, defensa, velocidad, altura, peso } = req.body;
     const newPokemon = await Pokemon.create({
-      name,
+      nombre,
       vida,
       ataque,
       defensa,
@@ -35,6 +45,10 @@ router.post("/pokemons", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
+// GET /types:
+// Obtener todos los tipos de pokemons posibles
+// En una primera instancia deberán traerlos desde pokeapi y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
 
 router.get("/types", async (req, res) => {
   try {

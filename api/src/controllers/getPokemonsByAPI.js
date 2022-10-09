@@ -12,7 +12,7 @@ const getPokemonsByAPI = async () => {
 
     const pokeData = await Promise.all(promises);
 
-    const pokemons = pokeData.map((e) => {
+    const pokemons = await pokeData.map((e) => {
       return {
         id: e.data.id,
         nombre: e.data.name,
@@ -27,7 +27,7 @@ const getPokemonsByAPI = async () => {
           e.data.sprites.front_default,
       };
     });
-    console.log(pokemons);
+    return pokemons;
   } catch (error) {
     console.log(error);
   }
