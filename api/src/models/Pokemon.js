@@ -34,6 +34,9 @@ module.exports = (sequelize) => {
       peso: {
         type: DataTypes.INTEGER,
       },
+      img: {
+        type: DataTypes.STRING,
+      },
     },
     { timestamps: false }
   );

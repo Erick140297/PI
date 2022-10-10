@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const path = require("path");
 const routes = require('./routes/index.js');
 
 require('./db.js');
@@ -31,5 +32,8 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
+
+//Static files
+server.use(express.static(path.join(__dirname, "public")));
 
 module.exports = server;
