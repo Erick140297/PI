@@ -1,0 +1,32 @@
+***********************************************************************************************************
+Comandos más comunes para gestionar bases de datos:
+
+\l    —> lista las bases de datos existentes
+\c   —> cambiar a otra base de datos ( \c nueva_base ) por ejemplo
+\d   —> ver definiciones de una tabla ( \d tabla) por ejemplo
+\dn   —> listar los esquemas
+\dn+   —> listar los esquemas con más detalles de privilegios y la descripción
+\df   —> listar definiciones
+\dv   —> listar las vistas
+\du   —> listas los usuarios
+\q   —> salir del gestor
+
+Definiendo cómo es almacenada la información.
+
+CREATE DATABASE se utiliza para crear una nueva base de datos vacía.
+DROP DATABASE se utiliza para eliminar completamente una base de datos existente.
+CREATE TABLE se utiliza para crear una nueva tabla, donde la información se almacena realmente.
+ALTER TABLE se utiliza para modificar una tabla ya existente.
+DROP TABLE se utiliza para eliminar por completo una tabla existente.
+
+
+Manipulando los datos.
+
+SELECT * FROM "tabla";
+
+SELECT se utiliza cuando quieres leer (o seleccionar) tus datos.
+INSERT se utiliza cuando quieres añadir (o insertar) nuevos datos.
+UPDATE se utiliza cuando quieres cambiar (o actualizar) datos existentes.
+DELETE se utiliza cuando quieres eliminar (o borrar) datos existentes.
+REPLACE se utiliza cuando quieres añadir o cambiar (o reemplazar) datos nuevos o ya existentes.
+TRUNCATE se utiliza cuando quieres vaciar (o borrar) todos los datos de la plantilla.
