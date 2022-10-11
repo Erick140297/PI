@@ -7,7 +7,7 @@ const createPokemonForDB = async (
   defensa,
   velocidad,
   altura,
-  peso
+  peso,
 ) => {
   const newPokemon = await Pokemon.create({
     nombre,
@@ -21,4 +21,4 @@ const createPokemonForDB = async (
   return newPokemon;
 };
 
-module.exports = createPokemonForDB
+module.exports = createPokemonForDB;
