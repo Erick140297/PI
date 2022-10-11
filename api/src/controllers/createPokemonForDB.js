@@ -8,6 +8,7 @@ const createPokemonForDB = async (
   velocidad,
   altura,
   peso,
+  arrayTipos
 ) => {
   const newPokemon = await Pokemon.create({
     nombre,
@@ -18,7 +19,15 @@ const createPokemonForDB = async (
     altura,
     peso,
   });
-  return newPokemon;
+
+  id = newPokemon.id;
+  let pokemon = await Pokemon.findByPk(id);
+  let dataTipos = await pokemon.addTipos(arrayTipos);
+  let tipos = [];
+  dataTipos.forEach((e) => tipos.push(e.tipoId));
+  pokemon = { ...pokemon.dataValues, tipos: tipos };
+
+  return pokemon;
 };
 
 module.exports = createPokemonForDB;
