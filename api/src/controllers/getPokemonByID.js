@@ -1,10 +1,31 @@
 const axios = require("axios");
-const { Pokemon } = require("../db");
+const { Pokemon, Tipo } = require("../db");
 
 const getPokemonByID = async (id) => {
   if (id.includes("-")) {
-    const pokemon = await Pokemon.findByPk(id);
-    return pokemon;
+    // const pokemon = await Pokemon.findByPk(id);
+    // return pokemon;
+    const pokemon = await Pokemon.findOne({
+      where: {id: id},
+      include: [
+        {
+          model: Tipo,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    });
+    if (pokemon) {
+      let tipos = []
+      for (let i = 0; i < pokemon.dataValues.tipos.length; i++) {
+        tipos.push(pokemon.dataValues.tipos[i].name)
+      }
+      let newPokemon = { ...pokemon.dataValues, tipos: tipos };
+      console.log(newPokemon)
+      return newPokemon;
+    }
   } else {
     const tipos = [];
     const pokeData = await axios.get(

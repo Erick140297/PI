@@ -1,12 +1,12 @@
 const { Router } = require('express')
 const uploadFile = require('../middleware/multer')
-
+const updatePokemon = require('../controllers/updatePokemon')
 const router = Router();
 
-router.put("/upload/:id", uploadFile(), (req, res) => {
+router.post("/upload/:id", uploadFile(), async (req, res) => {
   const { id } = req.params
-  console.log(req.file.filename)
-  res.send(id);
+  const pokemon = await updatePokemon(id);
+  res.send(pokemon);
 });
 
 module.exports = router
