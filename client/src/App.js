@@ -1,6 +1,6 @@
 import "./App.css";
-import Card from "./components/Card";
-import { bulbasaur} from './data.js'
+// import Card from "./components/Card";
+// import { bulbasaur} from './data.js'
 import LandingPage from './components/LandingPage'
 // import Lateral from '.Galeria/lateral.jpg'
 
