@@ -1,22 +1,36 @@
-import "./App.css";
+import React, {useState} from "react";
+import s from "./App.module.css";
 import LandingPage from "./components/LandingPage";
-import Card from "./components/Card";
 import Nav from "./components/Nav.jsx";
-
-import { bulbasaur } from "./data";
+import Cards from "./components/Cards";
 
 function App() {
-  return (
-    <div>
-      {/* <LandingPage onHome={() => alert("Ir a home")} /> */}
+  
+  const [pokemons, setPokemons] = useState([])
 
-      <Nav />
-      <Card
-        imagen={bulbasaur.img}
-        nombre={bulbasaur.nombre}
-        tipos={bulbasaur.tipos}
-        onClose={() => alert(bulbasaur.nombre)}
-      />
+  function searchPokemon(name){
+    fetch(`http://localhost:3001/pokemons?name=${name}`)
+      .then(response => response.json())
+      .then(data =>{
+        setPokemons(data)
+      })
+  }
+
+  function getPokemons(){
+    fetch(`http://localhost:3001/pokemons`)
+      .then(response => response.json())
+      .then(data =>{
+        setPokemons(data)
+      })
+  }
+
+  // getPokemons()
+
+  return (
+    <div className={s.App}>
+      <LandingPage toHome={getPokemons} />
+      <Nav searchPokemon = {searchPokemon} getPokemons = {getPokemons}/>
+      <Cards pokemons={pokemons}/>
     </div>
   );
 }

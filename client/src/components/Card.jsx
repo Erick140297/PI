@@ -5,9 +5,9 @@ const Card = ({ imagen, nombre, tipos, onClose }) => {
   return (
     <div className={s.pokebola}>
       <div className={s.superior}>
-        <button className={s.btn} onClick={onClose}>
+        {/* <button className={s.btn} onClick={onClose}>
           X
-        </button>
+        </button> */}
         <img className={s.img} src={imagen} alt={nombre} />
       </div>
       <div className={s.inferior}>

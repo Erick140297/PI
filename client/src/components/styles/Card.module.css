@@ -1,20 +1,19 @@
 .pokebola{
-  margin-top: 20px;
-  margin-left: 40px;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   width: 180px;
-  height: 345px;
+  height: 300px;
   border: 5px solid black;
   border-radius: 15px;
+  background-color: white;
+  cursor: pointer;
 }
 
 .superior{
   display: flex;
   flex-direction: column;
   width: 180px;
-  height: 170px;
+  height: 150px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: red;
@@ -28,6 +27,7 @@
 }
 
 .img{
+  margin-top: 10px;
   display: flex;
   height: 120px;
   width: 120px;
