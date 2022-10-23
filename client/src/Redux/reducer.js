@@ -1,8 +1,15 @@
-import { GET_POKEMONS, GET_POKEMON_DETAIL, CLEAN_DETAIL } from "./actions";
+import {
+  GET_POKEMONS,
+  GET_POKEMON_DETAIL,
+  CLEAN_DETAIL,
+  GET_POKEMON_NAME,
+  CLEAN_NAME,
+} from "./actions";
 
 const initialState = {
   pokemons: [],
   pokemonDetail: {},
+  pokemonName: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +30,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonDetail: {},
+      };
+
+    case GET_POKEMON_NAME:
+      return {
+        ...state,
+        pokemonName: action.payload,
+      };
+
+    case CLEAN_NAME:
+      return {
+        ...state,
+        pokemonName: {},
       };
 
     default:

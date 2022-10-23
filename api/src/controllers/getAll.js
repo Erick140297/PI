@@ -9,9 +9,7 @@ const getAll = async (name) => {
     let pokemons = pokemonsDB.concat(pokemonsAPI);
     return pokemons;
   } else {
-    let pokemon = []
-    const response = await getPokemonsByName(name);
-    pokemon.push(response)
+    const pokemon = await getPokemonsByName(name);
     return pokemon;
   }
 };

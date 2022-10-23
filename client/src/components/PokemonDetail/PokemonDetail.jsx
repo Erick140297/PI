@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { getPokemonDetail, cleanDetail } from "../../Redux/actions";
 
-const PokemonDetail = (props) => {
-  const id = props.match.params.id;
+const PokemonDetail = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
   const pokemonDetail = useSelector((state) => state.pokemonDetail);
 
