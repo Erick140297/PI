@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { postImg } from "../../Redux/actions";
+import s from "./PostImage.module.css"
 
 const PostImage = () => {
   const response = useSelector((state) => state.postPokemon);
@@ -25,12 +26,12 @@ const PostImage = () => {
   };
 
   return (
-    <div>
+    <div className={s.container}>
       <p>Agrega una imagen</p>
-      <form onSubmit={(e) => handleUpload(e)}>
-        <label>Selecciona un archivo</label>
-        <input type="file" name="img" onChange={(e) => handleFile(e)} />
-        <button type="submit">Cargar</button>
+      <form className={s.form} onSubmit={(e) => handleUpload(e)}>
+        {/* <label>Selecciona un archivo</label> */}
+        <input  type="file" name="img" onChange={(e) => handleFile(e)} />
+        <button className={s.boton} type="submit">Cargar</button>
       </form>
     </div>
   );

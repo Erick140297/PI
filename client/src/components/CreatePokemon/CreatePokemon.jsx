@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postPokemon } from "../../Redux/actions";
 import { useHistory } from "react-router-dom";
-
+import s from "./CreatePokemon.module.css";
 
 const CreatePokemon = () => {
-
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -34,27 +33,27 @@ const CreatePokemon = () => {
   ];
 
   const diccionario = {
-    "normal":1,
-    "fighting":2,
-    "flying":3,
-    "poison":4,
-    "ground":5,
-    "rock":6,
-    "bug":7,
-    "ghost":8,
-    "steel":9,
-    "fire":10,
-    "water":11,
-    "grass":12,
-    "electric":13,
-    "psychic":14,
-    "ice":15,
-    "dragon":16,
-    "dark":17,
-    "fairy":18,
-    "unknown":19,
-    "shadow":20,
-  }
+    normal: 1,
+    fighting: 2,
+    flying: 3,
+    poison: 4,
+    ground: 5,
+    rock: 6,
+    bug: 7,
+    ghost: 8,
+    steel: 9,
+    fire: 10,
+    water: 11,
+    grass: 12,
+    electric: 13,
+    psychic: 14,
+    ice: 15,
+    dragon: 16,
+    dark: 17,
+    fairy: 18,
+    unknown: 19,
+    shadow: 20,
+  };
 
   const [form, setForm] = useState({
     nombre: "",
@@ -83,8 +82,8 @@ const CreatePokemon = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log(form)
-    dispatch(postPokemon(form))
+    console.log(form);
+    dispatch(postPokemon(form));
     history.push(`/home/create/img`);
     setForm({
       nombre: "",
@@ -167,127 +166,140 @@ const CreatePokemon = () => {
   };
 
   useEffect(() => {
-    if(tipos.tipo2 === ""){
+    if (tipos.tipo2 === "") {
       setForm({ ...form, arrayTipos: [tipos.tipo1] });
-    } else if(tipos.tipo2 !== ""){
+    } else if (tipos.tipo2 !== "") {
       setForm({ ...form, arrayTipos: [tipos.tipo1, tipos.tipo2] });
     }
   }, [tipos]);
 
   return (
-    <div>
-      <h2>Crea tu propio Pokemon</h2>
-      <form onSubmit={(e) => handlerSubmit(e)}>
-        <div>
-          <label>Nombre: </label>
-          <input
-            type="text"
-            onChange={handlerChange.nombre}
-            value={form.nombre}
-          />
-          {!form.nombre && <p>{error.string}</p>}
-        </div>
+    <div className={s.pantalla}>
+      <div className={s.container}>
+        <h2>Crea tu propio Pokemon</h2>
+        <form onSubmit={(e) => handlerSubmit(e)}>
+          <div>
+            <label>Nombre: </label>
+            <input
+              type="text"
+              onChange={handlerChange.nombre}
+              value={form.nombre}
+              className={s.inputName}
+            />
+            {!form.nombre && <p>{error.string}</p>}
+          </div>
 
-        <div>
-          <label>Vida: </label>
-          <input type="text" onChange={handlerChange.vida} value={form.vida} />
-        </div>
+          <div className={s.estadisticas}>
+            <div className={s.datos}>
+              <div className={s.input}>
+                <label>Vida: </label>
+                <input
+                  type="number"
+                  onChange={handlerChange.vida}
+                  value={form.vida}
+                />
+              </div>
 
-        <div>
-          <label>Ataque: </label>
-          <input
-            type="number"
-            onChange={handlerChange.ataque}
-            value={form.ataque}
-          />
-        </div>
+              <div className={s.input}>
+                <label>Ataque: </label>
+                <input
+                  type="number"
+                  onChange={handlerChange.ataque}
+                  value={form.ataque}
+                />
+              </div>
 
-        <div>
-          <label>Defensa: </label>
-          <input
-            type="number"
-            onChange={handlerChange.defensa}
-            value={form.defensa}
-          />
-        </div>
+              <div className={s.input}>
+                <label>Defensa: </label>
+                <input
+                  type="number"
+                  onChange={handlerChange.defensa}
+                  value={form.defensa}
+                />
+              </div>
 
-        <div>
-          <label>Velocidad: </label>
-          <input
-            type="number"
-            onChange={handlerChange.velocidad}
-            value={form.velocidad}
-          />
-        </div>
+              <div className={s.input}>
+                <label>Velocidad: </label>
+                <input
+                  type="number"
+                  onChange={handlerChange.velocidad}
+                  value={form.velocidad}
+                />
+              </div>
 
-        <div>
-          <label>Altura: </label>
-          <input
-            type="number"
-            onChange={handlerChange.altura}
-            value={form.altura}
-          />
-        </div>
+              <div className={s.input}>
+                <label>Altura: </label>
+                <input
+                  type="number"
+                  onChange={handlerChange.altura}
+                  value={form.altura}
+                />
+              </div>
 
-        <div>
-          <label>Peso: </label>
-          <input
-            type="number"
-            onChange={handlerChange.peso}
-            value={form.peso}
-          />
-        </div>
+              <div className={s.input}>
+                <label>Peso: </label>
+                <input
+                  type="number"
+                  onChange={handlerChange.peso}
+                  value={form.peso}
+                />
+              </div>
+            </div>
 
-        <div>
-          <p>Status: </p>
-          <p>Rango</p>
-          {error.rango ? <p>{error.rango}</p> : <p>Ok</p>}
-          <p>Tipo de dato</p>
-          {dato ? <p>{dato}</p> : <p>Ok</p>}
-        </div>
+            <div className={s.status}>
+              <p>STATUS </p>
+              <p> - Rango:</p>
+              {error.rango ? <p>{error.rango}</p> : <p>Ok</p>}
+              <p> - Tipo de dato: </p>
+              {dato ? <p>{dato}</p> : <p>Ok</p>}
+            </div>
+          </div>
 
-        <label>Tipos: </label>
-        <p>Selecciona al menos un tipo</p>
-        <select name="tipo1" onChange={handlerChange.tipo1}>
-          {dataTipos?.map((tipo, index) => {
-            return (
-              <option value={tipo} key={index}>
-                {tipo}
-              </option>
-            );
-          })}
-        </select>
+          <div className={s.tipos}>
+            <label>Tipos: </label>
+            <p>Selecciona al menos un tipo</p>
+            <select name="tipo1" onChange={handlerChange.tipo1}>
+              {dataTipos?.map((tipo, index) => {
+                return (
+                  <option value={tipo} key={index}>
+                    {tipo}
+                  </option>
+                );
+              })}
+            </select>
 
-        <select name="tipo2" onChange={handlerChange.tipo2}>
-          {dataTipos?.map((tipo, index) => {
-            return (
-              <option value={tipo} key={index}>
-                {tipo}
-              </option>
-            );
-          })}
-        </select>
+            <select name="tipo2" onChange={handlerChange.tipo2}>
+              {dataTipos?.map((tipo, index) => {
+                return (
+                  <option value={tipo} key={index}>
+                    {tipo}
+                  </option>
+                );
+              })}
+            </select>
 
-        <button
-          type="submit"
-          disabled={
-            !form.nombre ||
-            !form.vida ||
-            !form.ataque ||
-            !form.defensa ||
-            !form.velocidad ||
-            !form.altura ||
-            !form.peso ||
-            !tipos.tipo1 ||
-            error.string ||
-            error.rango ||
-            error.tipo ||
-            dato
-          }
-        >
-          Crear
-        </button>
-      </form>
+            <button
+              type="submit"
+              disabled={
+                !form.nombre ||
+                !form.vida ||
+                !form.ataque ||
+                !form.defensa ||
+                !form.velocidad ||
+                !form.altura ||
+                !form.peso ||
+                !tipos.tipo1 ||
+                error.string ||
+                error.rango ||
+                error.tipo ||
+                dato
+              }
+            >
+              Crear
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
