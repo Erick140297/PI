@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { cleanName, getPokemonName } from "../../Redux/actions";
 
 const PokemonName = () => {
@@ -21,7 +22,9 @@ const PokemonName = () => {
     <div>
       <img src={pokemonName.img} alt={pokemonName.nombre} />
       <p>Nombre: </p>
-      <p>{pokemonName.nombre}</p>
+      <Link to = {`/home/pokemons/${pokemonName.id}`}>
+        <p>{pokemonName.nombre}</p>
+      </Link>
       <p>Tipos: </p>
       <ul>
         {pokemonName.tipos?.map((tipo, index) => {

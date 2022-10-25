@@ -4,12 +4,14 @@ import {
   CLEAN_DETAIL,
   GET_POKEMON_NAME,
   CLEAN_NAME,
+  POST_POKEMON
 } from "./actions";
 
 const initialState = {
   pokemons: [],
   pokemonDetail: {},
   pokemonName: {},
+  postPokemon: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -42,6 +44,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonName: {},
+      };
+
+    case POST_POKEMON:
+      return {
+        ...state,
+        postPokemon: action.payload,
       };
 
     default:

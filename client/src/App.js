@@ -6,6 +6,8 @@ import CreatePokemon from "./components/CreatePokemon/CreatePokemon"
 import Pokemons from "./components/Pokemons/Pokemons";
 import PokemonDetail from "./components/PokemonDetail/PokemonDetail";
 import PokemonName from "./components/PokemonName/PokemonName";
+import PostImage from "./components/PostImage/PostImage";
+import Exito from "./components/Exito/Exito";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <Route exact path={"/home/pokemons/:id"} component = {PokemonDetail} />
       <Route exact path={"/home/create"} render={() => <CreatePokemon />} />
       <Route exact path={"/home/name/:name"} render={() => <PokemonName />} />
+      <Route exact path={"/home/create/img"} render={() => <PostImage />} />
+      <Route exact path={"/home/create/exito"} render={() => <Exito />} />
     </div>
   );
 }

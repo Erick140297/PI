@@ -3,6 +3,7 @@ export const GET_POKEMON_DETAIL = "GET_POKEMON_DETAIL";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_POKEMON_NAME = "GET_POKEMON_NAME";
 export const CLEAN_NAME = "CLEAN_NAME";
+export const POST_POKEMON = "POST_POKEMON";
 
 export const getPokemons = () => {
   return function (dispatch) {
@@ -40,4 +41,19 @@ export const getPokemonName = (name) => {
 
 export const cleanName = () => {
   return { type: CLEAN_NAME };
+};
+
+export const postPokemon = (form) => {
+  return function (dispatch) {
+    return fetch(`http://localhost:3001/pokemons`, {
+      method: "POST",
+      body: JSON.stringify(form),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(res => res.json())
+    // .then(response => console.log(response))
+    .then(response => dispatch({ type: POST_POKEMON, payload: response}))
+    .catch(error => dispatch({ type: POST_POKEMON, payload: error}))
+  };
 };
