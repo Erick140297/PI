@@ -4,14 +4,16 @@ import {
   CLEAN_DETAIL,
   GET_POKEMON_NAME,
   CLEAN_NAME,
-  POST_POKEMON
+  POST_POKEMON,
+  POST_IMG,
 } from "./actions";
 
 const initialState = {
   pokemons: [],
   pokemonDetail: {},
   pokemonName: {},
-  postPokemon: {}
+  postPokemon: {},
+  postImg: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -50,6 +52,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         postPokemon: action.payload,
+      };
+
+    case POST_IMG:
+      return {
+        ...state,
+        postImg: action.payload,
       };
 
     default:

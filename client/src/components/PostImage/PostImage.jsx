@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import { postImg } from "../../Redux/actions";
 
 const PostImage = () => {
   const response = useSelector((state) => state.postPokemon);
   const [file, setFile] = useState(null);
   let history = useHistory();
+  const dispatch = useDispatch()
+
 
   const handleFile = (e) => {
     console.log(response.id);
@@ -18,17 +20,7 @@ const PostImage = () => {
     let formData = new FormData();
     formData.append("img", file);
     formData.append("name", "img");
-     axios({
-      url: `http://localhost:3001/upload/${response.id}`,
-      method: "POST",
-      body: formData,
-      headers: {
-        "Content-Type": "image/jpeg",
-      },
-      data: formData,
-    })
-      .then((res) => res.json())
-      .then((response) => console.log(response));
+    dispatch(postImg(formData, response))
     history.push(`/home/create/exito`);
   };
 
