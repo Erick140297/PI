@@ -1,0 +1,87 @@
+.pokebola{
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  height: 300px;
+  border: 5px solid black;
+  border-radius: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.superior{
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  height: 150px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: red;
+  border-bottom: 5px solid black;
+}
+
+.inferior{
+  background-color: white;
+  color: black;
+  flex-direction: column;
+}
+
+.img{
+  margin-top: 10px;
+  display: flex;
+  height: 120px;
+  width: 120px;
+  align-self: center;
+  background-color: wheat;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.btn{
+  color: black;
+  background-color: white;
+  width: 25px;
+  border-radius: 8px;
+  margin: 5px;
+  align-self: flex-end;
+  font-weight: bold;
+}
+
+.btn:hover{
+  color: red;
+  background-color: white;
+}
+
+.nombre{
+  height: 5px;
+  display: flex;
+  color: black;
+  justify-content: center;
+ 
+}
+
+h3{
+  height: 5px;
+  display: flex;
+  color: black;
+  justify-content: center;
+  padding-top: 10px;
+  
+}
+
+.tipos{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  color: black;
+  justify-content: space-around;
+}
+
+.tipo{
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 2px;
+  font-weight: bold;
+  background-color: aquamarine;
+}

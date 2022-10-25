@@ -1,0 +1,95 @@
+.pantalla {
+  display: flex;
+  /* height: 100vh; */
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background: red;
+  border: 5px solid black;
+  border-radius: 20px;
+  margin: 10px;
+  width: 800px;
+  height: 520px;
+  font-weight: bold;
+  color: black;
+}
+
+.imagen {
+  background: white;
+  width: 250px;
+  height: 250px;
+  border: 3px solid black;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.nombreTipos{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 380px;
+  
+}
+
+.datos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  background: white;
+  border: 2px solid black;
+  border-radius: 20px;
+  margin: 20px;
+  width: 400px;
+  
+}
+
+.imgDatos {
+  display: flex;
+  flex-direction: row;
+}
+
+.tipo {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 2px;
+  font-weight: bold;
+  background-color: aquamarine;
+}
+
+.containerEstadisticas{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border: 2px solid black;
+  border-radius: 20px;
+  margin-left: 20px;
+  width: 750px;
+}
+
+.estadisticas{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 700px;
+  margin-bottom: 20px;
+}
+
+.dato{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 100px;
+  background-color: rgb(250, 192, 83);
+}

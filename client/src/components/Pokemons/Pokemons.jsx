@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../../Redux/actions";
 import Pokemon from "../Pokemon/Pokemon";
+import s from './Pokemons.module.css'
+
 
 const Pokemons = () => {
   const dispatch = useDispatch();
@@ -11,11 +13,14 @@ const Pokemons = () => {
     dispatch(getPokemons());
   }, [dispatch]);
 
+  if(!pokemons){
+    return <h2>No hay pokemones disponibles para mostrar</h2>
+  }
   return (
-    <div>
+    <div className={s.container}>
       {pokemons.map((pokemon) => {
         return (
-          <div key={pokemon.id}>
+          <div className={s.item} key={pokemon.id}>
             <Pokemon
               id={pokemon.id}
               img={pokemon.img}

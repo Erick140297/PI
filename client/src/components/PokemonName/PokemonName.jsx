@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { cleanName, getPokemonName } from "../../Redux/actions";
+import s from "./PokemonName.module.css";
 
 const PokemonName = () => {
   const { name } = useParams();
@@ -19,19 +20,39 @@ const PokemonName = () => {
   }, [dispatch, name]);
 
   return (
-    <div>
-      <img src={pokemonName.img} alt={pokemonName.nombre} />
-      <p>Nombre: </p>
-      <Link to = {`/home/pokemons/${pokemonName.id}`}>
-        <p>{pokemonName.nombre}</p>
-      </Link>
-      <p>Tipos: </p>
-      <ul>
-        {pokemonName.tipos?.map((tipo, index) => {
-          return <li key={index}>{tipo}</li>;
-        })}
-      </ul>
-    </div>
+    <Link
+      to={`/home/pokemons/${pokemonName.id}`}
+      style={{ textDecoration: "none" }}
+    >
+      <div className={s.container}>
+        <img
+          className={s.imagen}
+          src={pokemonName.img}
+          alt={pokemonName.nombre}
+        />
+        <div className={s.texto}>
+          <div>
+            <p>Nombre: </p>
+            <p className={s.tipo}>{pokemonName.nombre}</p>
+          </div>
+          <div>
+            <p>Tipos: </p>
+            <ul>
+              {pokemonName.tipos?.map((tipo, index) => {
+                return (
+                  <>
+                    <li className={s.tipo} key={index}>
+                      {tipo}
+                    </li>
+                    <br />
+                  </>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 };
 

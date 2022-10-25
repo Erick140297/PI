@@ -34,7 +34,7 @@ export const cleanDetail = () => {
 
 export const getPokemonName = (name) => {
   return function (dispatch) {
-    return fetch(`http://localhost:3001/pokemons/${name}`)
+    return fetch(`http://localhost:3001/pokemons?name=${name}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch({ type: GET_POKEMON_NAME, payload: data });
